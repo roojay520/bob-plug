@@ -1,0 +1,33 @@
+{
+  "name": "@bob-plug/core",
+  "version": "0.0.0",
+  "description": "bob plugin core",
+  "keywords": [
+    "bobplugin"
+  ],
+  "author": "roojay <roojay520@gmail.com>",
+  "homepage": "https://github.com/roojay520/bob-plug/tree/main/packages/core#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "types": "types"
+  },
+  "files": [
+    "lib",
+    "types"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roojay520/bob-plug.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/roojay520/bob-plug.git/issues"
+  }
+}
