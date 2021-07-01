@@ -16,7 +16,7 @@
         "*.md"
       ],
       "conventionalCommits": true,
-      "message": "chore(release): publish %s"
+      "message": "chore(release): publish package"
     }
   }
 }
