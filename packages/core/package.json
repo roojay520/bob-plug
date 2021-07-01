@@ -12,6 +12,7 @@
     "lib",
     "types"
   ],
+  "types": "./types/index.d.ts",
   "scripts": {},
   "type": "module",
   "exports": {

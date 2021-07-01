@@ -1,6 +1,6 @@
 import CacheStore from './cache';
 import util from './util';
-// eslint-disable-next-line import/no-unresolved
+
 var CryptoJS = require('crypto-js');
 
 /**

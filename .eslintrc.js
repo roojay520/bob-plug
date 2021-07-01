@@ -15,7 +15,7 @@ module.exports = {
   ],
   settings: {
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
+      '@typescript-eslint/parser': ['.ts', '.tsx', '.js'],
     },
   },
   globals: {
@@ -35,7 +35,7 @@ module.exports = {
     'prefer-destructuring': 'off',
     'no-underscore-dangle': 'off',
     'object-curly-newline': 'off',
-    'import/no-unresolved': 'error',
+    // 'import/no-unresolved': 'error',
     'import/no-mutable-exports': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',

@@ -1,9 +1,9 @@
-import Core from './core';
-import Util from './util';
+import core from './core';
+import util from './util';
 import Cache from './cache';
 import CacheResult from './cache-result';
-declare const Bob: {
-    Util: {
+declare const BobCore: {
+    util: {
         error: typeof import("./util").error;
         isString: (val: any) => boolean;
         isArray: (val: any) => boolean;
@@ -23,5 +23,5 @@ declare const Bob: {
     $file: Bob.File;
     getOption: (key: string) => string;
 };
-export default Bob;
-export { Core, Util, Cache, CacheResult };
+export default BobCore;
+export { core, util, Cache, CacheResult };

@@ -1,9 +1,8 @@
-import Core from './core';
-import Util from './util';
+import core from './core';
+import util from './util';
 import Cache from './cache';
 import CacheResult from './cache-result';
 
-const Bob = { ...Core, Util, Cache, CacheResult };
-export default Bob;
+export default { ...core, util, Cache, CacheResult };
 
-export { Core, Util, Cache, CacheResult };
+export { core, util, Cache, CacheResult };

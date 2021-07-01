@@ -7,7 +7,7 @@ interface ICore {
   getOption: (key: string) => string;
 }
 
-var Core: Readonly<ICore> = {
+var core: Readonly<ICore> = {
   $http,
   $info,
   $log,
@@ -17,4 +17,4 @@ var Core: Readonly<ICore> = {
   getOption: (key: string): string => $option[key],
 };
 
-export default Core;
+export default core;
