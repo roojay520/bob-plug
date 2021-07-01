@@ -1,13 +1,15 @@
-interface ICore {
-  $http: Bob.Http;
-  $info: Bob.Info;
-  $log: Bob.Log;
-  $data: Bob.Data;
-  $file: Bob.File;
+import { Http, Info, Log, Data, File } from './bob-types';
+
+interface IApi {
+  $http: Http;
+  $info: Info;
+  $log: Log;
+  $data: Data;
+  $file: File;
   getOption: (key: string) => string;
 }
 
-var core: Readonly<ICore> = {
+var api: Readonly<IApi> = {
   $http,
   $info,
   $log,
@@ -17,4 +19,4 @@ var core: Readonly<ICore> = {
   getOption: (key: string): string => $option[key],
 };
 
-export default core;
+export default api;

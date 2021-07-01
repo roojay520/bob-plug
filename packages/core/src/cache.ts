@@ -1,5 +1,5 @@
 import { isString } from './util';
-import BobCore from './core';
+import BobCore from './api';
 
 interface Store {
   [propName: string]: any;

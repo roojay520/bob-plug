@@ -1,8 +1,8 @@
-import core from './core';
+import api from './api';
 import util from './util';
 import Cache from './cache';
 import CacheResult from './cache-result';
 
-export default { ...core, util, Cache, CacheResult };
+export * from './bob-types';
 
-export { core, util, Cache, CacheResult };
+export { api, util, Cache, CacheResult };
