@@ -1,0 +1,55 @@
+{
+  "name": "@bob-plug/cli",
+  "version": "0.0.0",
+  "description": "bob plugin cli",
+  "keywords": [
+    "bobplugin"
+  ],
+  "author": "roojay <roojay520@gmail.com>",
+  "homepage": "https://github.com/roojay520/bob-plug/tree/main/packages/cli#readme",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "types",
+    "bin",
+    "templates"
+  ],
+  "types": "./types/index.d.ts",
+  "scripts": {},
+  "bin": {
+    "bob": "bin/bob.js"
+  },
+  "exports": {
+    ".": {
+      "require": "./lib/index.cjs.js",
+      "import": "./lib/index.esm.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roojay520/bob-plug.git"
+  },
+  "bugs": {
+    "url": "https://github.com/roojay520/bob-plug.git/issues"
+  },
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "commander": "^8.0.0",
+    "ejs": "^3.1.6",
+    "inquirer": "^8.1.1",
+    "ora": "^5.4.1",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.0.6",
+    "@types/inquirer": "^7.3.2",
+    "@types/validate-npm-package-name": "^3.0.2"
+  }
+}

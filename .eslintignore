@@ -10,3 +10,6 @@ dist/
 lib/
 
 *.d.ts
+
+bin/
+templates/
