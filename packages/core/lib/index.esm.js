@@ -161,8 +161,8 @@ var __spreadValues = (a, b) => {
 };
 var CryptoJS = require("crypto-js");
 class CacheResult {
-  constructor() {
-    this._resultCacheStore = new Cache("result-cache");
+  constructor(nameSpace) {
+    this._resultCacheStore = new Cache(nameSpace || "result-cache");
     let result = this._resultCacheStore.get("result") || {};
     if (!util.isPlainObject(result))
       result = {};

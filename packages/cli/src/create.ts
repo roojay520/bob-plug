@@ -100,6 +100,19 @@ export async function create(_projectName: string, options: any) {
   }
   const spinner = ora().start('开始创建...');
   spinner.text = `${chalk.yellow('生成项目文件中...')}`;
+  // 排除部分示例文件
+  const ignore = ['node_modules'];
+  if (tpl.dir === 'bobplugin-tpl-translate') {
+    if (tpl.category === 'ocr') {
+      ignore.push(...['translate.ts', 'tts.ts', 'libs']);
+    }
+    if (tpl.category === 'tts') {
+      ignore.push(...['translate.ts', 'ocr.ts']);
+    }
+    if (tpl.category === 'translate') {
+      ignore.push(...['tts.ts', 'ocr.ts']);
+    }
+  }
   try {
     await fs.emptyDir(targetDir);
     await copy({
@@ -113,7 +126,7 @@ export async function create(_projectName: string, options: any) {
         identifier: `com.roojay.bobplug-${Date.now()}`,
         category: tpl.category,
       },
-      ignore: ['node_modules'],
+      ignore,
     });
   } catch (e) {
     spinner.fail('创建失败...');

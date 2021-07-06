@@ -447,6 +447,18 @@ function create(_projectName, options) {
     }
     const spinner = ora__default['default']().start("\u5F00\u59CB\u521B\u5EFA...");
     spinner.text = `${chalk__default['default'].yellow("\u751F\u6210\u9879\u76EE\u6587\u4EF6\u4E2D...")}`;
+    const ignore = ["node_modules"];
+    if (tpl.dir === "bobplugin-tpl-translate") {
+      if (tpl.category === "ocr") {
+        ignore.push(...["translate.ts", "tts.ts", "libs"]);
+      }
+      if (tpl.category === "tts") {
+        ignore.push(...["translate.ts", "ocr.ts"]);
+      }
+      if (tpl.category === "translate") {
+        ignore.push(...["tts.ts", "ocr.ts"]);
+      }
+    }
     try {
       yield fs__default['default'].emptyDir(targetDir);
       yield copy({
@@ -460,7 +472,7 @@ function create(_projectName, options) {
           identifier: `com.roojay.bobplug-${Date.now()}`,
           category: tpl.category
         },
-        ignore: ["node_modules"]
+        ignore
       });
     } catch (e) {
       spinner.fail("\u521B\u5EFA\u5931\u8D25...");
