@@ -17,8 +17,9 @@ const questions = [
     choices: templates.map((v: any, i: any) => ({
       key: i,
       name: v.name,
-      value: v.dir,
+      value: i,
     })),
+    default: 0,
   },
   {
     type: 'input',
@@ -41,6 +42,9 @@ const questions = [
     name: 'desc',
     message: '请输入项目描述(desc):',
     default: 'bob 插件',
+    validate(value: any) {
+      return !!value;
+    },
   },
   {
     type: 'confirm',
@@ -88,9 +92,10 @@ export async function create(_projectName: string, options: any) {
 
   console.log('\n');
   // 启动复制流程
-  const sourceDir = path.resolve(__dirname, '..', 'templates', answers.template);
+  const tpl = templates[answers.template];
+  const sourceDir = path.resolve(__dirname, '..', 'templates', `${tpl.dir}`);
   if (!isDir(sourceDir)) {
-    console.log(chalk.red(`${logIcon.error} ${answers.template} 模板不存在`));
+    console.log(chalk.red(`${logIcon.error} ${tpl.dir} 模板不存在`));
     return;
   }
   const spinner = ora().start('开始创建...');
@@ -105,7 +110,8 @@ export async function create(_projectName: string, options: any) {
         author: answers.author,
         name: pkgName,
         title: answers.title,
-        identifier: `com.bobplugin.${Date.now()}`,
+        identifier: `com.roojay.bobplug-${Date.now()}`,
+        category: tpl.category,
       },
       ignore: ['node_modules'],
     });

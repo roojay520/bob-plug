@@ -287,7 +287,7 @@ var __async$1 = (__this, __arguments, generator) => {
 };
 function copy(options) {
   return __async$1(this, null, function* () {
-    const { from = "", to = "", renderData, ignore = [] } = options;
+    const { from = "", to = "", tplData, ignore = [] } = options;
     let filesAndDirs = yield fs__default['default'].readdir(from);
     let files = [];
     let dirs = [];
@@ -305,7 +305,7 @@ function copy(options) {
       let fileName = _fileName;
       let content = fs__default['default'].readFileSync(path.resolve(from, fileName), "utf-8");
       if (fileName.slice(-4) === ".ejs") {
-        content = ejs__default['default'].render(content, renderData);
+        content = ejs__default['default'].render(content, { tpl: tplData });
         fileName = fileName.replace(".ejs", "");
       }
       fs__default['default'].writeFileSync(path.resolve(to, fileName), content);
@@ -317,23 +317,26 @@ function copy(options) {
       const fromDir = path.resolve(from, dirName);
       const toDir = path.resolve(to, dirName);
       fs__default['default'].ensureDirSync(toDir);
-      copy({ from: fromDir, to: toDir, renderData, ignore });
+      copy({ from: fromDir, to: toDir, tplData, ignore });
     });
   });
 }
 
 var templates = [
   {
-    name: "bobplugin-tpl-trl - \u6587\u672C\u7FFB\u8BD1\u63D2\u4EF6\u6A21\u677F",
-    dir: "bobplugin-tpl-trl"
+    name: "bobplugin-tpl-translate - \u6587\u672C\u7FFB\u8BD1\u63D2\u4EF6\u6A21\u677F",
+    category: "translate",
+    dir: "bobplugin-tpl-translate"
   },
   {
     name: "bobplugin-tpl-ocr - \u6587\u672C\u8BC6\u522B\u63D2\u4EF6\u6A21\u677F",
-    dir: "bobplugin-tpl-ocr"
+    category: "ocr",
+    dir: "bobplugin-tpl-translate"
   },
   {
     name: "bobplugin-tpl-tts - \u8BED\u97F3\u5408\u6210\u63D2\u4EF6\u6A21\u677F",
-    dir: "bobplugin-tpl-tts"
+    category: "tts",
+    dir: "bobplugin-tpl-translate"
   }
 ];
 
@@ -365,8 +368,9 @@ const questions = [
     choices: templates.map((v, i) => ({
       key: i,
       name: v.name,
-      value: v.dir
-    }))
+      value: i
+    })),
+    default: 0
   },
   {
     type: "input",
@@ -378,8 +382,17 @@ const questions = [
   },
   {
     type: "input",
+    name: "title",
+    message: "\u8BF7\u8F93\u5165\u63D2\u4EF6\u5C55\u793A\u6807\u9898(title):",
+    validate(value) {
+      return !!value;
+    }
+  },
+  {
+    type: "input",
     name: "desc",
     message: "\u8BF7\u8F93\u5165\u9879\u76EE\u63CF\u8FF0(desc):",
+    default: "bob \u63D2\u4EF6",
     validate(value) {
       return !!value;
     }
@@ -407,11 +420,11 @@ function validateName(name) {
 }
 function create(_projectName, options) {
   return __async(this, null, function* () {
-    let projectName = _projectName;
+    let pkgName = _projectName;
     const cwd = options.cwd || process.cwd();
-    const inCurrent = projectName === ".";
-    const name = inCurrent ? path.relative("../", cwd) : projectName;
-    const targetDir = path.resolve(cwd, projectName || ".");
+    const inCurrent = pkgName === ".";
+    const name = inCurrent ? path.relative("../", cwd) : pkgName;
+    const targetDir = path.resolve(cwd, pkgName || ".");
     const isValidName = validateName(name);
     if (!isValidName)
       return;
@@ -426,9 +439,10 @@ function create(_projectName, options) {
       return;
     }
     console.log("\n");
-    const sourceDir = path.resolve(__dirname, "..", "templates", answers.template);
+    const tpl = templates[answers.template];
+    const sourceDir = path.resolve(__dirname, "..", "templates", `${tpl.dir}`);
     if (!isDir(sourceDir)) {
-      console.log(chalk__default['default'].red(`${logIcon.error} ${answers.template} \u6A21\u677F\u4E0D\u5B58\u5728`));
+      console.log(chalk__default['default'].red(`${logIcon.error} ${tpl.dir} \u6A21\u677F\u4E0D\u5B58\u5728`));
       return;
     }
     const spinner = ora__default['default']().start("\u5F00\u59CB\u521B\u5EFA...");
@@ -438,10 +452,13 @@ function create(_projectName, options) {
       yield copy({
         from: sourceDir,
         to: targetDir,
-        renderData: {
+        tplData: {
           desc: answers.desc,
           author: answers.author,
-          name: projectName
+          name: pkgName,
+          title: answers.title,
+          identifier: `com.roojay.bobplug-${Date.now()}`,
+          category: tpl.category
         },
         ignore: ["node_modules"]
       });
@@ -451,7 +468,7 @@ function create(_projectName, options) {
       return;
     }
     spinner.succeed(chalk__default['default'].green("\u521B\u5EFA\u5B8C\u6210!\n"));
-    console.log(chalk__default['default'].cyan(`$ cd ${projectName}`));
+    console.log(chalk__default['default'].cyan(`$ cd ${pkgName}`));
     console.log(chalk__default['default'].cyan(`$ yarn install && yarn run dev
 `));
   });
