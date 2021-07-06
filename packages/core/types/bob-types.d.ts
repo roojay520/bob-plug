@@ -144,7 +144,7 @@ export interface TranslateQuery {
 }
 export interface OcrQuery {
     from: Language;
-    image: Data;
+    image: DataObject;
     detectFrom: Exclude<Language, 'auto'>;
 }
 export interface TTSQuery {

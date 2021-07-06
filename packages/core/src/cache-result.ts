@@ -18,8 +18,8 @@ export default class CacheResult {
 
   private _result: any;
 
-  constructor() {
-    this._resultCacheStore = new CacheStore('result-cache');
+  constructor(nameSpace?: string) {
+    this._resultCacheStore = new CacheStore(nameSpace || 'result-cache');
     let result = this._resultCacheStore.get('result') || {};
     if (!util.isPlainObject(result)) result = {};
     this._result = result;

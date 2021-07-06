@@ -11,7 +11,7 @@ export default class CacheResult {
      */
     private _resultCacheStore;
     private _result;
-    constructor();
+    constructor(nameSpace?: string);
     _save(): void;
     get(key: string): any;
     set(key: string, val: any): void;
