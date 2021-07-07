@@ -304,8 +304,8 @@ export interface TranslateResult {
     raw?: any;
 }
 export interface ToDictObject {
-    phonetics: Array<PhoneticObject>;
-    parts: Array<PartObject>;
+    phonetics?: Array<PhoneticObject>;
+    parts?: Array<PartObject>;
     exchanges?: Array<ExchangeObject>;
     relatedWordParts?: Array<RelatedWordPartObject>;
     addtions?: Array<AddtionObject>;
