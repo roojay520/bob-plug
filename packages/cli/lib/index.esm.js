@@ -451,7 +451,7 @@ function create(_projectName, options) {
         ignore.push(...["tts.ts", "ocr.ts"]);
       }
     }
-    let _name = pkgName.replace(/[^a-z0-9.]*/gi, "").toLowerCase();
+    let _name = pkgName.replace(/[^a-z0-9._]*/gi, "").toLowerCase();
     try {
       yield fs.emptyDir(targetDir);
       yield copy({
