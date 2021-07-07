@@ -113,6 +113,8 @@ export async function create(_projectName: string, options: any) {
       ignore.push(...['tts.ts', 'ocr.ts']);
     }
   }
+  // 必须由数字、小写字母和 . 组成
+  let _name = pkgName.replace(/[^a-z0-9.]*/gi, '').toLowerCase();
   try {
     await fs.emptyDir(targetDir);
     await copy({
@@ -123,7 +125,7 @@ export async function create(_projectName: string, options: any) {
         author: answers.author,
         name: pkgName,
         title: answers.title,
-        identifier: `com.roojay.bobplug-${Date.now()}`,
+        identifier: `com.roojay.bobplug.${_name}`,
         category: tpl.category,
         iconId: pluginIcon[tpl.category],
       },

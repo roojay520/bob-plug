@@ -464,6 +464,7 @@ function create(_projectName, options) {
         ignore.push(...["tts.ts", "ocr.ts"]);
       }
     }
+    let _name = pkgName.replace(/[^a-z0-9.]*/gi, "").toLowerCase();
     try {
       yield fs__default['default'].emptyDir(targetDir);
       yield copy({
@@ -474,7 +475,7 @@ function create(_projectName, options) {
           author: answers.author,
           name: pkgName,
           title: answers.title,
-          identifier: `com.roojay.bobplug-${Date.now()}`,
+          identifier: `com.roojay.bobplug.${_name}`,
           category: tpl.category,
           iconId: pluginIcon[tpl.category]
         },
