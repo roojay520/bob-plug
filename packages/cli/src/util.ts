@@ -14,3 +14,10 @@ export const logIcon = {
   warning: '⚠️',
   error: '❌️',
 };
+
+// https://ripperhe.gitee.io/bob/#/plugin/addtion/icon
+export const pluginIcon: { [propName: string]: string } = {
+  translate: '001',
+  ocr: '002',
+  tts: '003',
+};

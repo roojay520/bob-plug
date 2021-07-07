@@ -264,6 +264,11 @@ const logIcon = {
   warning: "\u26A0\uFE0F",
   error: "\u274C\uFE0F"
 };
+const pluginIcon = {
+  translate: "001",
+  ocr: "002",
+  tts: "003"
+};
 
 var __async$1 = (__this, __arguments, generator) => {
   return new Promise((resolve, reject) => {
@@ -470,7 +475,8 @@ function create(_projectName, options) {
           name: pkgName,
           title: answers.title,
           identifier: `com.roojay.bobplug-${Date.now()}`,
-          category: tpl.category
+          category: tpl.category,
+          iconId: pluginIcon[tpl.category]
         },
         ignore
       });

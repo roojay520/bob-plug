@@ -5,7 +5,7 @@ import fs from 'fs-extra';
 import inquirer from 'inquirer';
 import validateProjectName from 'validate-npm-package-name';
 
-import { isDir, logIcon } from './util';
+import { isDir, logIcon, pluginIcon } from './util';
 import { copy } from './copy';
 import templates from '../templates/config';
 
@@ -125,6 +125,7 @@ export async function create(_projectName: string, options: any) {
         title: answers.title,
         identifier: `com.roojay.bobplug-${Date.now()}`,
         category: tpl.category,
+        iconId: pluginIcon[tpl.category],
       },
       ignore,
     });
