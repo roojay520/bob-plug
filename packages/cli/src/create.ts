@@ -113,8 +113,8 @@ export async function create(_projectName: string, options: any) {
       ignore.push(...['tts.ts', 'ocr.ts']);
     }
   }
-  // 必须由数字、小写字母和 . 组成
-  let _name = pkgName.replace(/[^a-z0-9.]*/gi, '').toLowerCase();
+  // 只能由数字、小写字母、_ 和 . 组成
+  let _name = pkgName.replace(/[^a-z0-9._]*/gi, '').toLowerCase();
   try {
     await fs.emptyDir(targetDir);
     await copy({
