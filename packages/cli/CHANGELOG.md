@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/roojay520/bob-plug/compare/@bob-plug/cli@0.1.3...@bob-plug/cli@0.1.4) (2021-07-08)
+
+**Note:** Version bump only for package @bob-plug/cli
+
+
+
+
+
 ## [0.1.3](https://github.com/roojay520/bob-plug/compare/@bob-plug/cli@0.1.2...@bob-plug/cli@0.1.3) (2021-07-08)
 
 **Note:** Version bump only for package @bob-plug/cli
