@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/roojay520/bob-plug/compare/@bob-plug/cli@0.1.4...@bob-plug/cli@0.1.5) (2021-07-08)
+
+
+### Bug Fixes
+
+* **cli:** 修复检查更新地址错误 ([f1adeae](https://github.com/roojay520/bob-plug/commit/f1adeae0554bbe5d4fa393313eb0bf73d08b44cd))
+
+
+
+
+
 ## [0.1.4](https://github.com/roojay520/bob-plug/compare/@bob-plug/cli@0.1.3...@bob-plug/cli@0.1.4) (2021-07-08)
 
 **Note:** Version bump only for package @bob-plug/cli
