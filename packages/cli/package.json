@@ -13,7 +13,8 @@
     "types",
     "bin",
     "templates/*",
-    "docs"
+    "docs",
+    ".gitignore"
   ],
   "types": "./types/index.d.ts",
   "scripts": {},
