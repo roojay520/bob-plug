@@ -12,7 +12,7 @@
     "lib",
     "types",
     "bin",
-    "templates",
+    "templates/*",
     "docs"
   ],
   "types": "./types/index.d.ts",

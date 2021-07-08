@@ -1,6 +1,7 @@
 import path from 'path';
 import copy from 'rollup-plugin-copy';
 import json from '@rollup/plugin-json';
+import babel from '@rollup/plugin-babel';
 import esbuild from 'rollup-plugin-esbuild';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
@@ -39,6 +40,11 @@ const RollupConfig = {
     }),
     commonjs(),
     nodePolyfills(),
+    babel({
+      extensions: ['.js', '.ts'],
+      babelHelpers: 'bundled',
+      exclude: 'node_modules/**',
+    }),
     esbuild({
       // All options are optional
       include: /\.[jt]?s$/, // default, inferred from `loaders` option

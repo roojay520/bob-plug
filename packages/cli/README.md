@@ -28,34 +28,6 @@ cd [项目名]
 yarn install
 yarn run dev
 ```
-## 注意事项
-
-1. 全局变量不能使用 `let` 或 `const` 声明, 必须使用 `var` 关键字声明, 不然会导致在 `Bob` 中注入执行的时候找不到变量。在方法内部则不受影响。
-
-```ts
-// ❌ 错误
-let foo = 'foo';
-const bar = 'bar';
-function test(msg: string) {
-  $log.info(msg);
-}
-test(foo);
-test(bar);
-
-// ✅ 正确
-var foo = 'foo';
-function test(msg: string) {
-  $log.info(msg);
-}
-test(foo);
-
-// ✅ 正确
-function sayHello() {
-  let msg = 'Hello';
-  $log.info(msg);
-}
-```
-
 
 ## 示例
 
@@ -115,8 +87,7 @@ yarn install
 yarn run dev
 ```
 
-- 此时会在项目根目录下自动生成 `dist` 文件夹, 其中包含一个 `bobplug-pinyin.bobplugin` 的文件夹。
-- 这个文件夹在编辑器里面可以正常显示为文件夹, 在 `Finder` 应用里面则显示为文件, 双击即可安装为 `Bob` 插件。
+- 自动生成 `dist/bobplug-pinyin.bobplugin` 文件夹, 在 `Finder` 里面双击即可安装为 `Bob` 插件。
 - `dist` 下的文件是根据 `src` 目录下的源文件自动生成的, 并且是实时更新的, 在 `dist` 下做的修改操作都会被覆盖。
 
 4. 编译打包(如果使用用 Github Action 自动发布则省略此步操作)
@@ -148,11 +119,9 @@ git commit -m "feat: 初始化项目"
 # 链接到远程仓库, !注意: 下面仓库地址填自己创建的
 git remote add origin https://github.com/roojay520/bobplug-pinyin.git
 
-# 生成 tag 版本标记和 changelog 文件
-yarn version
+# 推送到远端仓库
+git push --set-upstream origin master
 
- # 推送包含 tag 的记录到 github 仓库
-git push --follow-tags origin master
 ```
 
 后续更新文件
@@ -164,9 +133,10 @@ git pull origin master --rebase
 # 提交更改
 git add . && git commit -m "feat: 添加新功能"
 
+# 生成 tag 版本标记和 changelog 文件, 触发 github action 自动发布
 # 如果需要发布新版本执行, 例如更新文档之类的可跳过此步骤
 yarn version
 
-# 推送到远端
+# 推送包含 tag 的记录到 github 仓库
 git push --follow-tags origin master
 ```
