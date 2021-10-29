@@ -1,4 +1,6 @@
-export declare function error(type?: Bob.ServiceErrorType, message?: string, addtion?: any): Bob.ServiceError;
+import { ServiceErrorType, ServiceError } from './bob-types.d';
+
+export declare function error(type?: ServiceErrorType, message?: string, addtion?: any): ServiceError;
 export declare var isArray: (val: any) => boolean;
 export declare var isArrayAndLenGt: (val: any, len?: number) => boolean;
 export declare var isString: (val: any) => boolean;

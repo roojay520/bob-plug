@@ -253,7 +253,7 @@ var substr = 'ab'.substr(-1) === 'b' ?
 
 const isDir = (p) => {
   try {
-    return fs__default['default'].statSync(p).isDirectory();
+    return fs__default["default"].statSync(p).isDirectory();
   } catch (e) {
     return false;
   }
@@ -293,7 +293,7 @@ var __async$1 = (__this, __arguments, generator) => {
 function copy(options) {
   return __async$1(this, null, function* () {
     const { from = "", to = "", tplData, ignore = [] } = options;
-    let filesAndDirs = yield fs__default['default'].readdir(from);
+    let filesAndDirs = yield fs__default["default"].readdir(from);
     let files = [];
     let dirs = [];
     filesAndDirs.forEach((name) => {
@@ -308,12 +308,12 @@ function copy(options) {
         return;
       }
       let fileName = _fileName;
-      let content = fs__default['default'].readFileSync(path.resolve(from, fileName), "utf-8");
+      let content = fs__default["default"].readFileSync(path.resolve(from, fileName), "utf-8");
       if (fileName.slice(-4) === ".ejs") {
-        content = ejs__default['default'].render(content, { tpl: tplData });
+        content = ejs__default["default"].render(content, { tpl: tplData });
         fileName = fileName.replace(".ejs", "");
       }
-      fs__default['default'].writeFileSync(path.resolve(to, fileName), content);
+      fs__default["default"].writeFileSync(path.resolve(to, fileName), content);
     });
     dirs.forEach((dirName) => {
       if (ignore.includes(dirName)) {
@@ -321,7 +321,7 @@ function copy(options) {
       }
       const fromDir = path.resolve(from, dirName);
       const toDir = path.resolve(to, dirName);
-      fs__default['default'].ensureDirSync(toDir);
+      fs__default["default"].ensureDirSync(toDir);
       copy({ from: fromDir, to: toDir, tplData, ignore });
     });
   });
@@ -411,15 +411,15 @@ const questions = [
 ];
 function validateName(name) {
   var _a, _b;
-  const result = validateProjectName__default['default'](name);
+  const result = validateProjectName__default["default"](name);
   if (result.validForNewPackages)
     return true;
-  console.error(chalk__default['default'].red(`\u65E0\u6548\u7684\u9879\u76EE\u540D: "${name}"`));
+  console.error(chalk__default["default"].red(`\u65E0\u6548\u7684\u9879\u76EE\u540D: "${name}"`));
   (_a = result.errors) == null ? void 0 : _a.forEach((err) => {
-    console.error(chalk__default['default'].red.dim(`Error: ${err}`));
+    console.error(chalk__default["default"].red.dim(`Error: ${err}`));
   });
   (_b = result.warnings) == null ? void 0 : _b.forEach((warn) => {
-    console.error(chalk__default['default'].red.dim(`Warning: ${warn}`));
+    console.error(chalk__default["default"].red.dim(`Warning: ${warn}`));
   });
   return false;
 }
@@ -434,24 +434,24 @@ function create(_projectName, options) {
     if (!isValidName)
       return;
     if (isDir(targetDir)) {
-      console.log(chalk__default['default'].red(`${logIcon.error} ${targetDir} \u5DF2\u5B58\u5728, \u8BF7\u5220\u9664\u6216\u91CD\u65B0\u547D\u540D\u9879\u76EE`));
+      console.log(chalk__default["default"].red(`${logIcon.error} ${targetDir} \u5DF2\u5B58\u5728, \u8BF7\u5220\u9664\u6216\u91CD\u65B0\u547D\u540D\u9879\u76EE`));
       return;
     }
-    var promptInfo = inquirer__default['default'].createPromptModule();
+    var promptInfo = inquirer__default["default"].createPromptModule();
     const answers = yield promptInfo(questions);
     if (answers.confirm === false) {
-      console.log(chalk__default['default'].red(`${logIcon.error} \u53D6\u6D88\u521B\u5EFA`));
+      console.log(chalk__default["default"].red(`${logIcon.error} \u53D6\u6D88\u521B\u5EFA`));
       return;
     }
     console.log("\n");
     const tpl = templates[answers.template];
     const sourceDir = path.resolve(__dirname, "..", "templates", `${tpl.dir}`);
     if (!isDir(sourceDir)) {
-      console.log(chalk__default['default'].red(`${logIcon.error} ${tpl.dir} \u6A21\u677F\u4E0D\u5B58\u5728`));
+      console.log(chalk__default["default"].red(`${logIcon.error} ${tpl.dir} \u6A21\u677F\u4E0D\u5B58\u5728`));
       return;
     }
-    const spinner = ora__default['default']().start("\u5F00\u59CB\u521B\u5EFA...");
-    spinner.text = `${chalk__default['default'].yellow("\u751F\u6210\u9879\u76EE\u6587\u4EF6\u4E2D...")}`;
+    const spinner = ora__default["default"]().start("\u5F00\u59CB\u521B\u5EFA...");
+    spinner.text = `${chalk__default["default"].yellow("\u751F\u6210\u9879\u76EE\u6587\u4EF6\u4E2D...")}`;
     const ignore = ["node_modules"];
     if (tpl.dir === "bobplugin-tpl-translate") {
       if (tpl.category === "ocr") {
@@ -466,7 +466,7 @@ function create(_projectName, options) {
     }
     let _name = pkgName.replace(/[^a-z0-9._]*/gi, "").toLowerCase();
     try {
-      yield fs__default['default'].emptyDir(targetDir);
+      yield fs__default["default"].emptyDir(targetDir);
       yield copy({
         from: sourceDir,
         to: targetDir,
@@ -486,9 +486,9 @@ function create(_projectName, options) {
       console.error(e);
       return;
     }
-    spinner.succeed(chalk__default['default'].green("\u521B\u5EFA\u5B8C\u6210!\n"));
-    console.log(chalk__default['default'].cyan(`$ cd ${pkgName}`));
-    console.log(chalk__default['default'].cyan(`$ yarn install && yarn run dev
+    spinner.succeed(chalk__default["default"].green("\u521B\u5EFA\u5B8C\u6210!\n"));
+    console.log(chalk__default["default"].cyan(`$ cd ${pkgName}`));
+    console.log(chalk__default["default"].cyan(`$ yarn install && yarn run dev
 `));
   });
 }

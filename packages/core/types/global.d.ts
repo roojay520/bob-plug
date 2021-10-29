@@ -199,15 +199,15 @@ declare namespace Bob {
 
   // https://ripperhe.gitee.io/bob/#/plugin/api/log
   interface Log {
-    public static info: (msg: string) => void; // 用于打印一些常规的信息
-    public static error: (msg: string) => void; // 用于打印错误信息
+    static info: (msg: string) => void; // 用于打印一些常规的信息
+    static error: (msg: string) => void; // 用于打印错误信息
   }
 
   // https://ripperhe.gitee.io/bob/#/plugin/api/http
   interface Http {
-    public static request<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
-    public static get<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
-    public static post<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
+    static request<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
+    static get<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
+    static post<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
   }
   type HttpMethod =
     | 'get'
@@ -279,12 +279,12 @@ declare namespace Bob {
 
   // https://ripperhe.gitee.io/bob/#/plugin/api/data
   interface Data {
-    public static fromUTF8: (data: string) => DataObject;
-    public static fromHex: (data: string) => DataObject;
-    public static fromBase64: (data: string) => DataObject;
-    public static fromByteArray(data: number[]): DataObject;
-    public static fromData: (data: DataObject) => DataObject;
-    public static isData: (data: any) => boolean;
+    static fromUTF8: (data: string) => DataObject;
+    static fromHex: (data: string) => DataObject;
+    static fromBase64: (data: string) => DataObject;
+    static fromByteArray(data: number[]): DataObject;
+    static fromData: (data: DataObject) => DataObject;
+    static isData: (data: any) => boolean;
   }
   interface DataObject {
     length: number;
