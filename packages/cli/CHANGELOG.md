@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/roojay520/bob-plug/compare/@bob-plug/cli@0.1.6...@bob-plug/cli@0.1.7) (2022-01-07)
+
+
+### Bug Fixes
+
+* 修复 cli 子包缺失的依赖 ([f006d84](https://github.com/roojay520/bob-plug/commit/f006d8403607dc5090f82c4724a028fb7b352e4d))
+
+
+
+
+
 ## [0.1.6](https://github.com/roojay520/bob-plug/compare/@bob-plug/cli@0.1.5...@bob-plug/cli@0.1.6) (2021-10-29)
 
 **Note:** Version bump only for package @bob-plug/cli
