@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/roojay520/bob-plug/compare/@bob-plug/core@0.1.5...@bob-plug/core@0.1.6) (2022-07-20)
+
+
+### Bug Fixes
+
+* 修复部分类型错误 ([f08101e](https://github.com/roojay520/bob-plug/commit/f08101e13220cfeaeda5aeef8373a2b999c74024))
+
+
+
+
+
 ## [0.1.5](https://github.com/roojay520/bob-plug/compare/@bob-plug/core@0.1.4...@bob-plug/core@0.1.5) (2022-07-20)
 
 
