@@ -384,3 +384,9 @@ declare var $option: Bob.Option;
 declare var $log: Bob.Log;
 declare var $data: Bob.Data;
 declare var $file: Bob.File;
+
+declare function supportLanguages(): any;
+declare function translate(query: Bob.TranslateQuery, completion: Bob.Completion): void;
+declare function ocr(query: Bob.OcrQuery, completion: Bob.Completion): void;
+declare function tts(query: Bob.TTSQuery, completion: Bob.Completion): void;
+declare function getLanguages(): supportLanguages;

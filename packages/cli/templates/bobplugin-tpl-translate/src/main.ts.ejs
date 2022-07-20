@@ -17,13 +17,15 @@ import { _ocr } from './ocr';
 var formatString = require('./libs/human-string');
 <% } %>
 
-export function supportLanguages(): Bob.supportLanguages {
+function supportLanguages(): Bob.supportLanguages {
   return getSupportLanguages();
 }
+global.supportLanguages = supportLanguages;
+
 
 <% if (tpl.category === 'translate') { %>
 // https://ripperhe.gitee.io/bob/#/plugin/quickstart/translate
-export function translate(query: Bob.TranslateQuery, completion: Bob.Completion) {
+function translate(query: Bob.TranslateQuery, completion: Bob.Completion) {
   const { text = '', detectFrom, detectTo } = query;
   const str = formatString(text);
   const params = { from: detectFrom, to: detectTo, cache: Bob.api.getOption('cache') };
@@ -37,11 +39,12 @@ export function translate(query: Bob.TranslateQuery, completion: Bob.Completion)
       completion({ error: Bob.util.error('api', '插件出错', error) });
     });
 }
+global.translate = translate;
 <% } %>
 
 <% if (tpl.category === 'tts') { %>
 // https://ripperhe.gitee.io/bob/#/plugin/quickstart/tts
-export function tts(query: Bob.TTSQuery, completion: Bob.Completion) {
+function tts(query: Bob.TTSQuery, completion: Bob.Completion) {
   const { text = '', lang } = query;
   const str = formatString(text);
   const params = { from: lang, cache: Bob.api.getOption('cache') };
@@ -54,11 +57,12 @@ export function tts(query: Bob.TTSQuery, completion: Bob.Completion) {
       completion({ error: Bob.util.error('api', '插件出错', error) });
     });
 }
+global.tts = tts;
 <% } %>
 
 <% if (tpl.category === 'ocr') { %>
 // https://ripperhe.gitee.io/bob/#/plugin/quickstart/ocr
-export function ocr(query: Bob.OcrQuery, completion: Bob.Completion) {
+function ocr(query: Bob.OcrQuery, completion: Bob.Completion) {
   const { image, from, detectFrom } = query;
   const params = { from, detectFrom, cache: Bob.api.getOption('cache') };
   let res = _ocr(image, params);
@@ -70,5 +74,6 @@ export function ocr(query: Bob.OcrQuery, completion: Bob.Completion) {
       completion({ error: Bob.util.error('api', '插件出错', error) });
     });
 }
+global.ocr = ocr;
 <% } %>
 
