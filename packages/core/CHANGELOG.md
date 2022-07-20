@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/roojay520/bob-plug/compare/@bob-plug/core@0.1.4...@bob-plug/core@0.1.5) (2022-07-20)
+
+
+### Bug Fixes
+
+* 修复打包压缩造成方法名对应不上的问题 ([57fc99f](https://github.com/roojay520/bob-plug/commit/57fc99f4cf20751ab76d2b1ed76cc62fe9a8299b))
+
+
+
+
+
 ## [0.1.4](https://github.com/roojay520/bob-plug/compare/@bob-plug/core@0.1.3...@bob-plug/core@0.1.4) (2021-10-29)
 
 **Note:** Version bump only for package @bob-plug/core

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/roojay520/bob-plug/compare/@bob-plug/cli@0.1.7...@bob-plug/cli@0.1.8) (2022-07-20)
+
+
+### Bug Fixes
+
+* 修复打包压缩造成方法名对应不上的问题 ([57fc99f](https://github.com/roojay520/bob-plug/commit/57fc99f4cf20751ab76d2b1ed76cc62fe9a8299b))
+
+
+
+
+
 ## [0.1.7](https://github.com/roojay520/bob-plug/compare/@bob-plug/cli@0.1.6...@bob-plug/cli@0.1.7) (2022-01-07)
 
 
