@@ -199,15 +199,15 @@ declare namespace Bob {
 
   // https://ripperhe.gitee.io/bob/#/plugin/api/log
   interface Log {
-    static info: (msg: string) => void; // 用于打印一些常规的信息
-    static error: (msg: string) => void; // 用于打印错误信息
+    info: (msg: string) => void; // 用于打印一些常规的信息
+    error: (msg: string) => void; // 用于打印错误信息
   }
 
   // https://ripperhe.gitee.io/bob/#/plugin/api/http
   interface Http {
-    static request<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
-    static get<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
-    static post<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
+    request<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
+    get<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
+    post<T = any, R = HttpResponsePromise<T>>(config: HttpRequestConfig): Promise<R>;
   }
   type HttpMethod =
     | 'get'
@@ -279,16 +279,16 @@ declare namespace Bob {
 
   // https://ripperhe.gitee.io/bob/#/plugin/api/data
   interface Data {
-    static fromUTF8: (data: string) => DataObject;
-    static fromHex: (data: string) => DataObject;
-    static fromBase64: (data: string) => DataObject;
-    static fromByteArray(data: number[]): DataObject;
-    static fromData: (data: DataObject) => DataObject;
-    static isData: (data: any) => boolean;
+    fromUTF8: (data: string) => DataObject;
+    fromHex: (data: string) => DataObject;
+    fromBase64: (data: string) => DataObject;
+    fromByteArray(data: number[]): DataObject;
+    fromData: (data: DataObject) => DataObject;
+    isData: (data: any) => boolean;
   }
   interface DataObject {
     length: number;
-    toUTF8(): string | undefine;
+    toUTF8(): string | undefined;
     toHex(useUpper?: boolean): string;
     toBase64(): string;
     toByteArray(): number[];
@@ -385,8 +385,7 @@ declare var $log: Bob.Log;
 declare var $data: Bob.Data;
 declare var $file: Bob.File;
 
-declare function supportLanguages(): any;
+declare function supportLanguages(): Bob.supportLanguages;
 declare function translate(query: Bob.TranslateQuery, completion: Bob.Completion): void;
 declare function ocr(query: Bob.OcrQuery, completion: Bob.Completion): void;
 declare function tts(query: Bob.TTSQuery, completion: Bob.Completion): void;
-declare function getLanguages(): supportLanguages;

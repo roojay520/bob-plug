@@ -17,9 +17,11 @@ export var isPlainObject = (val: any) => !!val && typeof val === 'object' && val
 export var isNil = (val: any) => val === undefined || val === null;
 
 export function deepClone(obj: any) {
-  if (!isPlainObject) return obj;
+  if (!isPlainObject(obj)) return obj;
   const clone = { ...obj };
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   Object.keys(clone).forEach((key) => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]));
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
 }
 

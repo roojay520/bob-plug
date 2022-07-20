@@ -38,6 +38,7 @@ module.exports = {
     // 'import/no-unresolved': 'error',
     'import/no-mutable-exports': 'off',
     'import/prefer-default-export': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/no-named-as-default-member': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

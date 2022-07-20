@@ -20,6 +20,8 @@ var formatString = require('./libs/human-string');
 function supportLanguages(): Bob.supportLanguages {
   return getSupportLanguages();
 }
+
+// @ts-ignore
 global.supportLanguages = supportLanguages;
 
 
@@ -39,6 +41,8 @@ function translate(query: Bob.TranslateQuery, completion: Bob.Completion) {
       completion({ error: Bob.util.error('api', '插件出错', error) });
     });
 }
+
+// @ts-ignore
 global.translate = translate;
 <% } %>
 
@@ -57,6 +61,8 @@ function tts(query: Bob.TTSQuery, completion: Bob.Completion) {
       completion({ error: Bob.util.error('api', '插件出错', error) });
     });
 }
+
+// @ts-ignore
 global.tts = tts;
 <% } %>
 
@@ -74,6 +80,8 @@ function ocr(query: Bob.OcrQuery, completion: Bob.Completion) {
       completion({ error: Bob.util.error('api', '插件出错', error) });
     });
 }
+
+// @ts-ignore
 global.ocr = ocr;
 <% } %>
 
